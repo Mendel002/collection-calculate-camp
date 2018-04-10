@@ -2,24 +2,37 @@
 
 function get_letter_interval_2(number_a, number_b) {
   //在这里写入代码
-  var collection_a = ['t', 'u', 'v', 'w', 'x',
-    'y', 'z', 'aa', 'ab', 'ac', 'ad', 'ae', 'af', 'ag',
-    'ah', 'ai', 'aj', 'ak', 'al', 'am', 'an', 'ao', 'ap',
-    'aq', 'ar', 'as', 'at', 'au', 'av', 'aw', 'ax', 'ay',
-    'az', 'ba'
-  ];
-  var collection_b = ['ba', 'az', 'ay', 'ax', 'aw', 'av', 'au', 'at',
-    'as', 'ar', 'aq', 'ap', 'ao', 'an', 'am', 'al', 'ak', 'aj', 'ai',
-    'ah', 'ag', 'af', 'ae', 'ad', 'ac', 'ab', 'aa', 'z', 'y', 'x',
-    'w', 'v', 'u', 't'
-  ];
-  if (number_a < number_b) {
-    return collection_a;
-  }else if (number_a > number_b) {
-    return collection_b;
-  }else {
-    return ['ab'];
-  }
+  let rounds = getRounds(number_a > number_b ? number_a : number_b);
+
+  if (number_a > number_b) return getRoundsLetters(rounds).splice(number_b - 1, number_a - number_b + 1).reverse();
+  if (number_a < number_b) return getRoundsLetters(rounds).splice(number_a - 1, number_b - number_a + 1);
+
+  return [getRoundsLetters(rounds)[number_a - 1]];
+}
+
+function getBasicLetter() {
+  let basicLetter = [];
+  for (let i = 97; i < 97 + 26; ++i)
+    basicLetter.push(String.fromCharCode(i));
+
+  return basicLetter;
+}
+
+function getRoundsLetters(rounds) {
+  let roundsLetters = getBasicLetter();
+  let basicLetters = getBasicLetter();
+
+  for (let i = 0; i < rounds - 1; ++i)
+    basicLetters.map(letter => roundsLetters.push(basicLetters[i] + letter));
+
+  return roundsLetters;
+}
+
+function getRounds(number) {
+  let rounds = number / 26;
+  if (number % 26 !== 0) rounds += 1;
+
+  return rounds;
 }
 
 module.exports = get_letter_interval_2;

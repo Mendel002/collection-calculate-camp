@@ -2,7 +2,7 @@
 
 var count_same_elements = require("../../practices/section_2/practice_2/practice.js");
 
-describe('practice-2-2', function() {
+describe('practice-2-2', function () {
 
   var collection = [
     "a", "a", "a",
@@ -16,19 +16,19 @@ describe('practice-2-2', function() {
     "d-5"
   ];
 
-  it("把A集合中相同的元素统计出数量", function() {
+  it("把A集合中相同的元素统计出数量", function () {
     var result = count_same_elements(collection);
 
     expect(result).toEqual([
-      {key: "a", count: 3},
-      {key: "e", count: 7},
-      {key: "h", count: 11},
-      {key: "t", count: 20},
-      {key: "f", count: 9},
-      {key: "c", count: 8},
-      {key: "g", count: 7},
-      {key: "b", count: 6},
-      {key: "d", count: 5}
+      { key: "a", count: 3 },
+      { key: "e", count: 7 },
+      { key: "h", count: 11 },
+      { key: "t", count: 20 },
+      { key: "f", count: 9 },
+      { key: "c", count: 8 },
+      { key: "g", count: 7 },
+      { key: "b", count: 6 },
+      { key: "d", count: 5 }
     ]);
   });
 });
