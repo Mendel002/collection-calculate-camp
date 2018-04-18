@@ -10,9 +10,9 @@ function create_updated_collection(collection_a, object_b) {
       if (collection_a[index] === collection_a[i]) {
         count++;
       }
-    }
+    }//计算相同元素的个数
     sum += count;
-    if (collection_a[index].split("-").length === 1) {
+    if (collection_a[index].split("-").length === 1) {//用-作为分隔符拆分字符串
       result.push({ key: collection_a[index], count: count });
     } else {
       result.push({ key: collection_a[index].split("-")[0], count: collection_a[index].split("-")[1] });
@@ -20,7 +20,7 @@ function create_updated_collection(collection_a, object_b) {
 
     if (sum >= collection_a.length) {
       break;
-    }
+    }//结束循环
   }
 
   return sub(result, object_b);
